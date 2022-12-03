@@ -14,11 +14,14 @@ def scrape(session, tag=None, category='recent', save=False):
     # handle query
     baseurl = 'https://snips.stockbit.com'
     slug_category = '/snips-terbaru' if category == 'recent' else f'/{category}'
-    if len(tag) == 4 and tag == tag.upper():
-        slug_tag = tag
+    if tag is not None:
+        if len(tag) == 4 and tag == tag.upper():
+            slug_tag = tag
+        else:
+            slug_tag = tag.title().replace(' ','+')
+        endpoint = f"/tag/{slug_tag}#show-archive"
     else:
-        slug_tag = tag.title().replace(' ','+')
-    endpoint = f"/tag/{slug_tag}#show-archive" if tag is not None else ''
+        endpoint = ''
     try:
         # interact with the web
         response = session.get(baseurl + slug_category + endpoint)
