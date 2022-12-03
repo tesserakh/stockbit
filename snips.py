@@ -56,6 +56,10 @@ def scrape(session, tag=None, category='recent', save=False):
                 csv_writer = csv.writer(fout)
                 csv_writer.writerows(data)
             print(f"Data saved to {save_path}")
+        else:
+            for row in newsletter[1:]:
+                # [published] headline <url>
+                print('[{}] {} <{}>'.format(row[0], row[1], row[4]))
         return
     except Exception as e:
         print(f'ERROR: {e}')
@@ -69,7 +73,6 @@ def parse(soup):
     else:
         newsletter = []
         for item in articles:
-            # parse items
             h1 = item.find('h1').find('a', href=True)
             headline = unicodedata.normalize('NFKD', h1.get_text())
             url = baseurl + h1['href']
@@ -77,9 +80,6 @@ def parse(soup):
             published_dt = datetime.strptime(published, '%Y-%m-%d')
             description = item.find('p').get_text()
             tags = ', '.join([i.get_text() for i in item.find_all('a', {'rel':'tag'})])
-            # expose newsletter
-            print('[{}] {} <{}>'.format(published, headline, url))
-            # save newsletter list
             newsletter.append([published, headline, description, tags, url])
     return newsletter
 
