@@ -1,6 +1,6 @@
 # Stockbit Newsletter
 
-Fetches the latest newsletter URLs from [Snips](https://snips.stockbit.com/) by Stockbit. Also, looks for articles related to some topics using a tag.
+Fetches the latest newsletter from [Snips](https://snips.stockbit.com/) by Stockbit. Also can be used to look for articles related to some topics using a tag. Stockbit does not provide an option to be able to subscribe to the articles via RSS feed, must be via email. The main goal of this project is intended to send the latest news and market analysis results by Stockbit team to other social media channels, especially Telegram using its Bot API.
 
 ![stockbit snips](media/stockbit-snips.gif)
 
@@ -45,4 +45,8 @@ For more details:
 ```
 python3 snips.py -h
 ```
+
+### Disclaimer
+
+This work is not directly affiliated with Stockbit.
 
