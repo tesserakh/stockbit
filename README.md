@@ -2,6 +2,8 @@
 
 Fetches the latest newsletter URLs from [Snips](https://snips.stockbit.com/) by Stockbit. Also, looks for articles related to some topics using a tag.
 
+![stockbit snips](media/stockbit-snips.gif)
+
 ### Requirements
 
 - Python 3
